@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Script/QueueIce.gd" type="Script" id=2]
+[ext_resource path="res://Scene/IceCracked.tscn" type="PackedScene" id=3]
+
+[node name="QueueIce" type="Spatial"]
+transform = Transform( 0.897667, 0, 0, 0, 0.897667, 0, 0, 0, 0.897667, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="IceCrackedOne" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.58, 0, 0 )
+
+[node name="IceCrackedTwo" parent="." instance=ExtResource( 3 )]
+
+[node name="IceCrackedThree" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.58, 0, 0 )

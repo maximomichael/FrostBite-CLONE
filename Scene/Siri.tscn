@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/3D/Siri/Siri.gltf" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Float"
+
+[node name="Siri" instance=ExtResource( 1 )]
+transform = Transform( 3.01155, 0, 0, 0, 3.01155, 0, 0, 0, 3.01155, 0, 0, 0 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Dance-loop"
+anims/Float = SubResource( 1 )

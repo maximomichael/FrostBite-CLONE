@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scene/Gaivota.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Script/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Scene/Siri.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Script/SkinEnemy.gd" type="Script" id=4]
+[ext_resource path="res://Script/Gaivota.gd" type="Script" id=5]
+[ext_resource path="res://Scene/Fish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Script/Fish.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Float"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.506031, -2.90395, -1.08184 ), Vector3( -0.506, -3.1, -1.082 ) ]
+}
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.20928, 0.784961, 0.214049 )
+
+[node name="Enemy" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Skin" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0 )
+script = ExtResource( 4 )
+
+[node name="Gaivota" parent="Skin" instance=ExtResource( 1 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.334893, 0 )
+script = ExtResource( 5 )
+
+[node name="Fish" parent="Skin" instance=ExtResource( 6 )]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.506001, -3.09254, -1.08199 )
+script = ExtResource( 7 )
+
+[node name="AnimationFish" type="AnimationPlayer" parent="Skin/Fish"]
+autoplay = "Float"
+anims/Float = SubResource( 1 )
+
+[node name="Siri" parent="Skin" instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -2.83165, -1.50196 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.141658, 0, 0, 0, 1, 0, 0.279687, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98757, 0 )
+shape = SubResource( 2 )
